@@ -1,28 +1,28 @@
 <p align="center">
-  <img src="./img.png" alt="Project Banner" width="100%">
+  <img src="./img.png" alt="MedConnect Banner" width="100%">
 </p>
 
-# [MED CONNECT] 🎯
+# MedConnect 🏥🎯
 
 ## Basic Details
 
-### Team Name: [THE FIXERS]
+### Team Name: THE FIXERS
 
 ### Team Members
-- Member 1: [fathima hudha pk] - [PPTM ARTS&SCIENCE COLLEGE CHERUR]
-- Member 2: [fasna sherin] - [PPTM ARTS &SCIENCE COLLEGE CHERUR]
+- Member 1: Fathima Hudha PK - PPTM Arts & Science College, Cherur
+- Member 2: Fasna Sherin - PPTM Arts & Science College, Cherur
 
 ### Hosted Project Link
-[mention your project hosted link here]
+[https://hudhafathima180-lab.github.io/tink-her-hack-temp/](https://hudhafathima180-lab.github.io/tink-her-hack-temp/)
 
 ### Project Description
-[2-3 lines about what your project does]
+MedConnect is a locality-based Hospital Doctors Management System that enables patients to check live availability status of doctors, book appointments with auto-generated tokens, and track their consultation queue in real-time.
 
-### The Problem statement
-[What problem are you solving?]
+### The Problem Statement
+Patients often waste hours waiting at hospitals without knowing doctor availability, estimated wait times, or their position in the queue. There is no easy way to find nearby hospitals, compare doctors, or track live consultation status — leading to frustration and inefficiency for both patients and healthcare providers.
 
 ### The Solution
-[How are you solving it?]
+MedConnect solves this by providing a unified platform where patients can browse hospitals by locality, view doctor profiles with live availability, book appointments with auto-generated tokens, and track their token status in real-time. Doctors can manage their consultation queue digitally, and hospital admins can register and manage their staff — all from a single, mobile-friendly web interface with zero backend dependency.
 
 ---
 
@@ -31,25 +31,23 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
-
-**For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
+- **Languages used:** HTML5, CSS3, JavaScript (ES6+)
+- **Frameworks used:** None (Vanilla — no frameworks for maximum portability)
+- **Libraries used:** Google Fonts (Inter), DiceBear Avatars API (doctor profile photos)
+- **Tools used:** VS Code, Git, GitHub Pages
 
 ---
 
 ## Features
 
-List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- **Feature 1:** 📍 Locality-based hospital discovery — browse 10+ localities and view approved hospitals with doctor counts
+- **Feature 2:** 👨‍⚕️ Doctor profiles with live availability — photo, specialization, consulting time, room number, and real-time online/offline status
+- **Feature 3:** 🎫 Auto-generated token booking — enter patient details, receive token number with estimated wait time
+- **Feature 4:** 📡 Live token tracking — real-time queue with color-coded statuses (🟢 consulting, 🟡 waiting, 🟣 booked) that auto-refreshes every 3 seconds
+- **Feature 5:** 🩺 Doctor dashboard — manage today's bookings, start/complete/skip tokens with automatic queue advancement
+- **Feature 6:** 🏥 Hospital admin panel — register hospitals, add/edit/delete doctors, toggle availability and booking status
+- **Feature 7:** 👑 Super Admin module — system analytics, hospital approval/suspension workflow, locality management
+- **Feature 8:** 🔐 Role-based authentication — 4 distinct user roles (Patient, Doctor, Hospital Admin, Super Admin)
 
 ---
 
@@ -59,361 +57,156 @@ List the key features of your project:
 
 #### Installation
 ```bash
-[Installation commands - e.g., npm install, pip install -r requirements.txt]
+# No installation required! Pure HTML/CSS/JS project.
+# Simply clone the repository:
+git clone https://github.com/hudhafathima180-lab/tink-her-hack-temp.git
+cd tink-her-hack-temp
 ```
 
 #### Run
 ```bash
-[Run commands - e.g., npm start, python app.py]
+# Option 1: Just open index.html in any browser
+# Double-click index.html or:
+start index.html        # Windows
+open index.html         # macOS
+xdg-open index.html     # Linux
+
+# Option 2: Use any local server (optional)
+npx serve .
+# or
+python -m http.server 8000
 ```
 
-### For Hardware:
+#### Demo Credentials
+| Role | Email | Password |
+|------|-------|----------|
+| Patient | `patient@demo.com` | `demo` |
+| Hospital Admin | `hospital@demo.com` | `demo` |
+| Super Admin | `admin@demo.com` | `demo` |
+| Doctor | *(auto-created)* | `demo` |
 
-#### Components Required
-[List all components needed with specifications]
-
-#### Circuit Setup
-[Explain how to set up the circuit]
+> 💡 **Tip:** Any email with password `demo` will auto-create an account for the selected role.
+> To reset all data: open browser Console → `localStorage.clear()` → refresh.
 
 ---
 
 ## Project Documentation
 
-### For Software:
+### Screenshots
 
-#### Screenshots (Add at least 3)
+![Screenshot1 - Login Page](screenshots/login.png)
+*MedConnect login page with dark glassmorphism theme, role-based authentication supporting Patient, Doctor, Hospital Admin, and Super Admin roles*
 
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot2 - Locality Selection](screenshots/localities.png)
+*Locality discovery grid showing 10 Bangalore localities with hospital counts — patients pick their area to find nearby hospitals*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-#### Diagrams
-
-**System Architecture:**
-
-![Architecture Diagram](docs/architecture.png)
-*Explain your system architecture - components, data flow, tech stack interaction*
-
-**Application Workflow:**
-
-![Workflow](docs/workflow.png)
-*Add caption explaining your workflow*
+![Screenshot3 - Doctor Booking](screenshots/booking.png)
+*Doctor profile with live availability badge, specialization, consulting time, and one-click appointment booking with auto-generated token*
 
 ---
 
-### For Hardware:
+### System Architecture
 
-#### Schematic & Circuit
-
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-#### Build Photos
-
-![Team](Add photo of your team here)
-
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
----
-
-## Additional Documentation
-
-### For Web Projects with Backend:
-
-#### API Documentation
-
-**Base URL:** `https://api.yourproject.com`
-
-##### Endpoints
-
-**GET /api/endpoint**
-- **Description:** [What it does]
-- **Parameters:**
-  - `param1` (string): [Description]
-  - `param2` (integer): [Description]
-- **Response:**
-```json
-{
-  "status": "success",
-  "data": {}
-}
+```mermaid
+graph TB
+    A["🔐 Auth System"] --> B["👤 Patient Module"]
+    A --> C["🩺 Doctor Module"]
+    A --> D["🏥 Hospital Admin"]
+    A --> E["👑 Super Admin"]
+    
+    B --> B1["📍 Locality Selection"]
+    B1 --> B2["🏥 Hospital List"]
+    B2 --> B3["👨‍⚕️ Doctor Profiles"]
+    B3 --> B4["📝 Token Booking"]
+    B4 --> B5["📡 Live Tracking"]
+    
+    C --> C1["📋 Today's Bookings"]
+    C --> C2["🎫 Token Queue"]
+    C --> C3["▶️ Active Consultation"]
+    
+    D --> D1["🏥 Hospital Registration"]
+    D --> D2["👨‍⚕️ Doctor Management"]
+    D --> D3["📅 Schedule View"]
+    
+    E --> E1["📊 Analytics Dashboard"]
+    E --> E2["✅ Hospital Approvals"]
+    E --> E3["📍 Locality Management"]
+    
+    F["💾 localStorage"] --> B
+    F --> C
+    F --> D
+    F --> E
 ```
 
-**POST /api/endpoint**
-- **Description:** [What it does]
-- **Request Body:**
-```json
-{
-  "field1": "value1",
-  "field2": "value2"
-}
-```
-- **Response:**
-```json
-{
-  "status": "success",
-  "message": "Operation completed"
-}
-```
+### Application Workflow
 
-[Add more endpoints as needed...]
-
----
-
-### For Mobile Apps:
-
-#### App Flow Diagram
-
-![App Flow](docs/app-flow.png)
-*Explain the user flow through your application*
-
-#### Installation Guide
-
-**For Android (APK):**
-1. Download the APK from [Release Link]
-2. Enable "Install from Unknown Sources" in your device settings:
-   - Go to Settings > Security
-   - Enable "Unknown Sources"
-3. Open the downloaded APK file
-4. Follow the installation prompts
-5. Open the app and enjoy!
-
-**For iOS (IPA) - TestFlight:**
-1. Download TestFlight from the App Store
-2. Open this TestFlight link: [Your TestFlight Link]
-3. Click "Install" or "Accept"
-4. Wait for the app to install
-5. Open the app from your home screen
-
-**Building from Source:**
-```bash
-# For Android
-flutter build apk
-# or
-./gradlew assembleDebug
-
-# For iOS
-flutter build ios
-# or
-xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug
+```mermaid
+sequenceDiagram
+    participant P as Patient
+    participant S as System
+    participant D as Doctor
+    
+    P->>S: Select Locality
+    S->>P: Show Hospitals
+    P->>S: Select Hospital
+    S->>P: Show Hospital Details + Doctors
+    P->>S: Select Doctor
+    S->>P: Show Doctor Profile + Availability
+    P->>S: Book Appointment (Name, Age, Phone)
+    S->>P: Generate Token #N + Est. Wait Time
+    P->>S: Open Live Tracking
+    S->>P: Real-time Token Queue (refreshes every 3s)
+    D->>S: Start Consultation (Token #1)
+    S->>P: Update: Token #1 = 🟢 Consulting
+    D->>S: Complete Token #1
+    S->>P: Auto-advance: Token #2 = 🟢 Consulting
 ```
 
 ---
 
-### For Hardware Projects:
+## Token Color Coding System
 
-#### Bill of Materials (BOM)
-
-| Component | Quantity | Specifications | Price | Link/Source |
-|-----------|----------|----------------|-------|-------------|
-| Arduino Uno | 1 | ATmega328P, 16MHz | ₹450 | [Link] |
-| LED | 5 | Red, 5mm, 20mA | ₹5 each | [Link] |
-| Resistor | 5 | 220Ω, 1/4W | ₹1 each | [Link] |
-| Breadboard | 1 | 830 points | ₹100 | [Link] |
-| Jumper Wires | 20 | Male-to-Male | ₹50 | [Link] |
-| [Add more...] | | | | |
-
-**Total Estimated Cost:** ₹[Amount]
-
-#### Assembly Instructions
-
-**Step 1: Prepare Components**
-1. Gather all components listed in the BOM
-2. Check component specifications
-3. Prepare your workspace
-![Step 1](images/assembly-step1.jpg)
-*Caption: All components laid out*
-
-**Step 2: Build the Power Supply**
-1. Connect the power rails on the breadboard
-2. Connect Arduino 5V to breadboard positive rail
-3. Connect Arduino GND to breadboard negative rail
-![Step 2](images/assembly-step2.jpg)
-*Caption: Power connections completed*
-
-**Step 3: Add Components**
-1. Place LEDs on breadboard
-2. Connect resistors in series with LEDs
-3. Connect LED cathodes to GND
-4. Connect LED anodes to Arduino digital pins (2-6)
-![Step 3](images/assembly-step3.jpg)
-*Caption: LED circuit assembled*
-
-**Step 4: [Continue for all steps...]**
-
-**Final Assembly:**
-![Final Build](images/final-build.jpg)
-*Caption: Completed project ready for testing*
+| Color | Status | Meaning |
+|-------|--------|---------|
+| 🟢 Green | `consulting` | Currently being seen by doctor |
+| 🟡 Yellow | `waiting` | Waiting in queue |
+| 🟣 Purple | `booked` | Booked but consulting hasn't started |
+| ⚪ Gray | `completed` | Consultation finished |
+| ~~Strikethrough~~ | `skipped` | Skipped by doctor |
 
 ---
 
-### For Scripts/CLI Tools:
+## AI Tools Used (For Transparency)
 
-#### Command Reference
+**Tool Used:** Gemini (Antigravity AI Coding Assistant)
 
-**Basic Usage:**
-```bash
-python script.py [options] [arguments]
-```
+**Purpose:**
+- Generated the complete frontend codebase (HTML, CSS, JavaScript)
+- Designed the dark glassmorphism UI theme
+- Implemented localStorage-based data persistence
+- Created seed data for demo (hospitals, doctors, localities)
 
-**Available Commands:**
-- `command1 [args]` - Description of what command1 does
-- `command2 [args]` - Description of what command2 does
-- `command3 [args]` - Description of what command3 does
-
-**Options:**
-- `-h, --help` - Show help message and exit
-- `-v, --verbose` - Enable verbose output
-- `-o, --output FILE` - Specify output file path
-- `-c, --config FILE` - Specify configuration file
-- `--version` - Show version information
-
-**Examples:**
-
-```bash
-# Example 1: Basic usage
-python script.py input.txt
-
-# Example 2: With verbose output
-python script.py -v input.txt
-
-# Example 3: Specify output file
-python script.py -o output.txt input.txt
-
-# Example 4: Using configuration
-python script.py -c config.json --verbose input.txt
-```
-
-#### Demo Output
-
-**Example 1: Basic Processing**
-
-**Input:**
-```
-This is a sample input file
-with multiple lines of text
-for demonstration purposes
-```
-
-**Command:**
-```bash
-python script.py sample.txt
-```
-
-**Output:**
-```
-Processing: sample.txt
-Lines processed: 3
-Characters counted: 86
-Status: Success
-Output saved to: output.txt
-```
-
-**Example 2: Advanced Usage**
-
-**Input:**
-```json
-{
-  "name": "test",
-  "value": 123
-}
-```
-
-**Command:**
-```bash
-python script.py -v --format json data.json
-```
-
-**Output:**
-```
-[VERBOSE] Loading configuration...
-[VERBOSE] Parsing JSON input...
-[VERBOSE] Processing data...
-{
-  "status": "success",
-  "processed": true,
-  "result": {
-    "name": "test",
-    "value": 123,
-    "timestamp": "2024-02-07T10:30:00"
-  }
-}
-[VERBOSE] Operation completed in 0.23s
-```
-
----
-
-## Project Demo
-
-### Video
-[Add your demo video link here - YouTube, Google Drive, etc.]
-
-*Explain what the video demonstrates - key features, user flow, technical highlights*
-
-### Additional Demos
-[Add any extra demo materials/links - Live site, APK download, online demo, etc.]
-
----
-
-## AI Tools Used (Optional - For Transparency Bonus)
-
-If you used AI tools during development, document them here for transparency:
-
-**Tool Used:** [e.g., GitHub Copilot, v0.dev, Cursor, ChatGPT, Claude]
-
-**Purpose:** [What you used it for]
-- Example: "Generated boilerplate React components"
-- Example: "Debugging assistance for async functions"
-- Example: "Code review and optimization suggestions"
-
-**Key Prompts Used:**
-- "Create a REST API endpoint for user authentication"
-- "Debug this async function that's causing race conditions"
-- "Optimize this database query for better performance"
-
-**Percentage of AI-generated code:** [Approximately X%]
+**Percentage of AI-generated code:** ~90%
 
 **Human Contributions:**
-- Architecture design and planning
-- Custom business logic implementation
-- Integration and testing
-- UI/UX design decisions
-
-*Note: Proper documentation of AI usage demonstrates transparency and earns bonus points in evaluation!*
+- Project concept and requirements definition
+- System architecture planning (modules, user flows)
+- Feature prioritization and scope decisions
+- Testing, deployment, and documentation
+- UI/UX design direction and feedback
 
 ---
 
 ## Team Contributions
 
-- [Name 1]: [Specific contributions - e.g., Frontend development, API integration, etc.]
-- [Name 2]: [Specific contributions - e.g., Backend development, Database design, etc.]
-- [Name 3]: [Specific contributions - e.g., UI/UX design, Testing, Documentation, etc.]
+- **Fathima Hudha PK:** Project ideation, system architecture design, feature requirements, testing & deployment, documentation
+- **Fasna Sherin:** UI/UX design direction, user flow planning, testing & QA, presentation
 
 ---
 
 ## License
 
-This project is licensed under the [LICENSE_NAME] License - see the [LICENSE](LICENSE) file for details.
-
-**Common License Options:**
-- MIT License (Permissive, widely used)
-- Apache 2.0 (Permissive with patent grant)
-- GPL v3 (Copyleft, requires derivative works to be open source)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
