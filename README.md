@@ -94,13 +94,13 @@ python -m http.server 8000
 
 ### Screenshots
 
-![Screenshot1 - Login Page](screenshots/login.png)
+![Screenshot1 - Login Page][(screenshots/login.png](https://github.com/hudhafathima180-lab/tink-her-hack-temp/blob/main/Screenshot%202026-02-14%20184106.png?raw=true))
 *MedConnect login page with dark glassmorphism theme, role-based authentication supporting Patient, Doctor, Hospital Admin, and Super Admin roles*
 
-![Screenshot2 - Locality Selection](screenshots/localities.png)
+![Screenshot2 - Locality Selection]([screenshots/localities.png](https://github.com/hudhafathima180-lab/tink-her-hack-temp/blob/main/Screenshot%202026-02-14%20184228.png?raw=true))
 *Locality discovery grid showing 10 Bangalore localities with hospital counts — patients pick their area to find nearby hospitals*
 
-![Screenshot3 - Doctor Booking](screenshots/booking.png)
+![Screenshot3 - Doctor Booking]([screenshots/booking.png](https://github.com/hudhafathima180-lab/tink-her-hack-temp/blob/main/Screenshot%202026-02-14%20184300.png?raw=true))
 *Doctor profile with live availability badge, specialization, consulting time, and one-click appointment booking with auto-generated token*
 
 ---
