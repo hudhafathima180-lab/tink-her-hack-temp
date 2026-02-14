@@ -2,46 +2,403 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Locality-based Hospital Doctors Management System with real-time token tracking" />
-    <title>MedLocate — Hospital &amp; Doctor Finder</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedConnect — Hospital Doctors Management System</title>
+    <meta name="description" content="Locality-based hospital and doctor management with real-time token tracking.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Skip Navigation for Accessibility -->
-    <a href="#main" class="skip-link">Skip to main content</a>
-
-    <!-- Top Header Bar -->
-    <header id="header" class="header" role="banner">
-        <div class="header-inner">
-            <button class="logo" onclick="navigate('home')" aria-label="Go to home page">
-                <span class="logo-icon" aria-hidden="true">+</span> MedLocate
-            </button>
-            <nav id="header-nav" class="header-nav" aria-label="Main navigation"></nav>
-            <div id="header-actions" class="header-actions"></div>
+    <!-- ============ LOADING SPLASH ============ -->
+    <div id="splash" class="splash">
+        <div class="splash-inner">
+            <div class="pulse-ring"></div>
+            <span class="splash-icon">🏥</span>
+            <h1>MedConnect</h1>
+            <p>Initializing system…</p>
         </div>
-    </header>
-
-    <!-- Main Content -->
-    <main id="main" class="main" role="main"></main>
-
-    <!-- Toast Notifications -->
-    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
-
-    <!-- Modal Overlay -->
-    <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="modal-content" id="modal-content"></div>
     </div>
 
-    <script src="js/data.js"></script>
-    <script src="js/views.js"></script>
-    <script src="js/app.js"></script>
+    <!-- ============ TOP NAV ============ -->
+    <nav id="topNav" class="top-nav hidden">
+        <div class="nav-inner">
+            <div class="nav-brand" onclick="goHome()">
+                <span class="brand-icon">🏥</span>
+                <span class="brand-text">MedConnect</span>
+            </div>
+            <div class="nav-actions">
+                <span id="navUser" class="nav-user"></span>
+                <button id="btnLogout" class="btn btn-sm btn-outline" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ MAIN CONTAINER ============ -->
+    <main id="appMain" class="app-main hidden">
+
+        <!-- ===== AUTH VIEW ===== -->
+        <section id="viewAuth" class="view">
+            <div class="auth-container">
+                <div class="auth-hero">
+                    <span class="auth-hero-icon">🏥</span>
+                    <h1>MedConnect</h1>
+                    <p>Your Locality-Based Hospital & Doctor Management System</p>
+                </div>
+                <div class="auth-card glass-card">
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login" onclick="switchAuthTab('login')">Login</button>
+                        <button class="auth-tab" data-tab="register"
+                            onclick="switchAuthTab('register')">Register</button>
+                    </div>
+                    <!-- LOGIN -->
+                    <form id="formLogin" class="auth-form" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" id="loginEmail" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPass">Password</label>
+                            <input type="password" id="loginPass" placeholder="••••••••" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginRole">Login As</label>
+                            <select id="loginRole" required>
+                                <option value="patient">Patient</option>
+                                <option value="doctor">Doctor</option>
+                                <option value="hospital">Hospital Admin</option>
+                                <option value="superadmin">Super Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <p class="auth-hint">Demo: use any email + password "demo"</p>
+                    </form>
+                    <!-- REGISTER -->
+                    <form id="formRegister" class="auth-form hidden" onsubmit="handleRegister(event)">
+                        <div class="form-group">
+                            <label for="regName">Full Name</label>
+                            <input type="text" id="regName" placeholder="Dr. Jane Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regEmail">Email</label>
+                            <input type="email" id="regEmail" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPass">Password</label>
+                            <input type="password" id="regPass" placeholder="••••••••" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPhone">Phone</label>
+                            <input type="tel" id="regPhone" placeholder="+91 9876543210" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regRole">Register As</label>
+                            <select id="regRole" required>
+                                <option value="patient">Patient</option>
+                                <option value="hospital">Hospital Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PATIENT VIEW ===== -->
+        <section id="viewPatient" class="view hidden">
+            <!-- Step 1: Locality -->
+            <div id="patientStep1" class="patient-step">
+                <div class="section-header">
+                    <h2>📍 Select Your Locality</h2>
+                    <p>Find hospitals and doctors near you</p>
+                </div>
+                <div class="search-bar glass-card">
+                    <input type="text" id="localitySearch"
+                        placeholder="Search locality (e.g. Koramangala, Indiranagar…)" oninput="filterLocalities()">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div id="localityGrid" class="locality-grid"></div>
+            </div>
+
+            <!-- Step 2: Hospitals List -->
+            <div id="patientStep2" class="patient-step hidden">
+                <button class="btn-back" onclick="patientBack(1)">← Back to Localities</button>
+                <div class="section-header">
+                    <h2 id="hospitalListTitle">🏥 Hospitals</h2>
+                    <p>Select a hospital to view doctors</p>
+                </div>
+                <div id="hospitalList" class="card-list"></div>
+            </div>
+
+            <!-- Step 3: Hospital Detail + Doctors -->
+            <div id="patientStep3" class="patient-step hidden">
+                <button class="btn-back" onclick="patientBack(2)">← Back to Hospitals</button>
+                <div id="hospitalDetail" class="hospital-detail glass-card"></div>
+                <div class="section-header">
+                    <h2>👨‍⚕️ Doctors</h2>
+                </div>
+                <div id="doctorList" class="card-list"></div>
+            </div>
+
+            <!-- Step 4: Doctor Profile + Booking -->
+            <div id="patientStep4" class="patient-step hidden">
+                <button class="btn-back" onclick="patientBack(3)">← Back to Doctors</button>
+                <div id="doctorProfile" class="doctor-profile glass-card"></div>
+
+                <!-- Booking Form -->
+                <div id="bookingSection" class="booking-section glass-card hidden">
+                    <h3>📝 Book Appointment</h3>
+                    <form id="formBooking" onsubmit="handleBooking(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" id="bookName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Age</label>
+                                <input type="number" id="bookAge" min="1" max="120" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Place</label>
+                                <input type="text" id="bookPlace" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" id="bookPhone" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Confirm Booking</button>
+                    </form>
+                </div>
+
+                <!-- Booking Confirmation -->
+                <div id="bookingConfirm" class="booking-confirm glass-card hidden">
+                    <div class="confirm-icon">✅</div>
+                    <h3>Booking Confirmed!</h3>
+                    <div id="confirmDetails"></div>
+                </div>
+            </div>
+
+            <!-- Step 5: My Tokens -->
+            <div id="patientStep5" class="patient-step hidden">
+                <button class="btn-back" onclick="patientBack(0)">← Back</button>
+                <div class="section-header">
+                    <h2>🎫 My Tokens</h2>
+                    <p>Track your booked tokens in real-time</p>
+                </div>
+                <div id="myTokensList" class="token-list"></div>
+            </div>
+
+            <!-- FAB: My Tokens -->
+            <button id="fabTokens" class="fab" onclick="showMyTokens()" title="My Tokens">
+                <span>🎫</span>
+                <span id="fabBadge" class="fab-badge hidden">0</span>
+            </button>
+        </section>
+
+        <!-- ===== TOKEN LIVE TRACKING VIEW ===== -->
+        <section id="viewTokenTrack" class="view hidden">
+            <button class="btn-back" onclick="closeTokenTrack()">← Back</button>
+            <div class="section-header">
+                <h2>📡 Live Token Tracking</h2>
+                <p id="trackDoctorName"></p>
+            </div>
+            <div class="live-indicator">
+                <span class="live-dot"></span> LIVE
+            </div>
+            <div id="liveTokenList" class="token-list"></div>
+        </section>
+
+        <!-- ===== DOCTOR VIEW ===== -->
+        <section id="viewDoctor" class="view hidden">
+            <div class="doc-dashboard">
+                <!-- Sub tabs -->
+                <div class="sub-tabs">
+                    <button class="sub-tab active" onclick="switchDocTab('bookings')">📋 Today's Bookings</button>
+                    <button class="sub-tab" onclick="switchDocTab('tokens')">🎫 Token List</button>
+                    <button class="sub-tab" onclick="switchDocTab('active')">▶️ Active Token</button>
+                </div>
+
+                <!-- Todays bookings -->
+                <div id="docBookings" class="doc-panel">
+                    <div class="section-header">
+                        <h2>📋 Today's Bookings</h2>
+                        <span id="docBookCount" class="badge"></span>
+                    </div>
+                    <div id="docBookingList" class="card-list"></div>
+                </div>
+
+                <!-- Token list -->
+                <div id="docTokens" class="doc-panel hidden">
+                    <div class="section-header">
+                        <h2>🎫 Checking Token List</h2>
+                    </div>
+                    <div id="docTokenList" class="token-list"></div>
+                </div>
+
+                <!-- Active token management -->
+                <div id="docActive" class="doc-panel hidden">
+                    <div class="section-header">
+                        <h2>▶️ Active Consultation</h2>
+                    </div>
+                    <div id="activeTokenCard" class="active-token-card glass-card">
+                        <p class="empty-state">No active token. Start consulting from the Token List.</p>
+                    </div>
+                    <div class="active-actions" id="activeActions" style="display:none">
+                        <button class="btn btn-success" onclick="completeToken()">✅ Complete</button>
+                        <button class="btn btn-warning" onclick="skipToken()">⏭️ Skip</button>
+                    </div>
+                    <div class="section-header" style="margin-top:1.5rem">
+                        <h3>Queue</h3>
+                    </div>
+                    <div id="docQueue" class="token-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOSPITAL ADMIN VIEW ===== -->
+        <section id="viewHospital" class="view hidden">
+            <div class="sub-tabs">
+                <button class="sub-tab active" onclick="switchHospTab('profile')">🏥 Hospital Profile</button>
+                <button class="sub-tab" onclick="switchHospTab('doctors')">👨‍⚕️ Manage Doctors</button>
+                <button class="sub-tab" onclick="switchHospTab('schedule')">📅 Schedule</button>
+            </div>
+
+            <!-- Hospital Profile / Registration -->
+            <div id="hospProfile" class="doc-panel">
+                <div class="section-header">
+                    <h2>🏥 Hospital Profile</h2>
+                </div>
+                <div id="hospProfileCard" class="glass-card">
+                    <form id="formHospital" onsubmit="saveHospital(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Hospital Name</label>
+                                <input type="text" id="hospName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Locality</label>
+                                <select id="hospLocality" required></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea id="hospAddress" rows="2" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Contact Phone</label>
+                                <input type="tel" id="hospPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="hospEmail" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload Document (Simulated)</label>
+                            <div class="file-upload">
+                                <span>📎 Click to upload registration document</span>
+                                <input type="file" id="hospDoc">
+                            </div>
+                        </div>
+                        <div id="hospStatus" class="status-badge"></div>
+                        <button type="submit" class="btn btn-primary">Save & Submit for Approval</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Manage Doctors -->
+            <div id="hospDoctors" class="doc-panel hidden">
+                <div class="section-header">
+                    <h2>👨‍⚕️ Manage Doctors</h2>
+                    <button class="btn btn-primary btn-sm" onclick="openDoctorModal()">+ Add Doctor</button>
+                </div>
+                <div id="hospDoctorList" class="card-list"></div>
+            </div>
+
+            <!-- Schedule -->
+            <div id="hospSchedule" class="doc-panel hidden">
+                <div class="section-header">
+                    <h2>📅 Consultation Schedule</h2>
+                </div>
+                <div id="scheduleList" class="card-list"></div>
+            </div>
+        </section>
+
+        <!-- ===== SUPER ADMIN VIEW ===== -->
+        <section id="viewSuperAdmin" class="view hidden">
+            <div class="sub-tabs">
+                <button class="sub-tab active" onclick="switchAdminTab('analytics')">📊 Analytics</button>
+                <button class="sub-tab" onclick="switchAdminTab('hospitals')">🏥 Hospitals</button>
+                <button class="sub-tab" onclick="switchAdminTab('localities')">📍 Localities</button>
+            </div>
+
+            <!-- Analytics -->
+            <div id="adminAnalytics" class="doc-panel">
+                <div class="section-header">
+                    <h2>📊 System Analytics</h2>
+                </div>
+                <div class="analytics-grid">
+                    <div class="stat-card glass-card">
+                        <span class="stat-icon">🏥</span>
+                        <div class="stat-value" id="statHospitals">0</div>
+                        <div class="stat-label">Total Hospitals</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <span class="stat-icon">👨‍⚕️</span>
+                        <div class="stat-value" id="statDoctors">0</div>
+                        <div class="stat-label">Total Doctors</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <span class="stat-icon">🎫</span>
+                        <div class="stat-value" id="statTokens">0</div>
+                        <div class="stat-label">Active Tokens</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <span class="stat-icon">💚</span>
+                        <div class="stat-value" id="statLive">0</div>
+                        <div class="stat-label">Live Consultations</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hospital Approvals -->
+            <div id="adminHospitals" class="doc-panel hidden">
+                <div class="section-header">
+                    <h2>🏥 Hospital Approvals</h2>
+                </div>
+                <div id="adminHospList" class="card-list"></div>
+            </div>
+
+            <!-- Localities -->
+            <div id="adminLocalities" class="doc-panel hidden">
+                <div class="section-header">
+                    <h2>📍 Manage Localities</h2>
+                    <button class="btn btn-primary btn-sm" onclick="openLocalityModal()">+ Add Locality</button>
+                </div>
+                <div id="adminLocalityList" class="card-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ MODAL OVERLAY ============ -->
+    <div id="modalOverlay" class="modal-overlay hidden" onclick="closeModal()">
+        <div class="modal glass-card" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- ============ TOAST ============ -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="app.js"></script>
 </body>
 
 </html>
